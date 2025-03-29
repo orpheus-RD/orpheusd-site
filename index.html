@@ -6,6 +6,8 @@
   <title>Orpheusd</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
+    /* 如果想让 SVG 搜索图标使用下面的样式，
+       请确保 <svg> 有 class="search-img" */
     .search-link .search-img {
       stroke: #fff !important;
       fill: none !important;
@@ -13,6 +15,7 @@
   </style>
 </head>
 <body>
+  <!-- 头部导航 -->
   <header id="navbar">
     <div class="nav-bar">
       <div class="nav-left">
@@ -36,6 +39,7 @@
     </div>
   </header>
 
+  <!-- 全屏背景区块 -->
   <div class="hero" id="hero">
     <div class="overlay"></div>
     <div class="content">
@@ -49,7 +53,9 @@
     &copy; 2025 Orpheusd.com
   </footer>
 
+  <!-- 脚本逻辑 -->
   <script>
+    // 若不需要“鼠标移动到顶部才显示导航”，可删除此段
     const nav = document.getElementById('navbar');
     document.addEventListener('mousemove', (e) => {
       if (e.clientY < 100) {
@@ -59,15 +65,18 @@
       }
     });
 
+    // 轮播背景图
     const hero = document.getElementById('hero');
-    const images = [
-      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg',
-      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284654/image1_duyhvo.jpg',
-      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285096/42571743284690_.pic_hd_21.50.29_lrclhi.jpg',
-      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285137/42581743284694_.pic_hd_21.50.29_a64ly7.jpg'
+    // 将你想要最先显示的那张图片放在数组的第一个位置
+    const images = ["DSCF3114.JPG",
+      "https://res.cloudinary.com/dtair9f5j/image/upload/v1743284654/image1_duyhvo.jpg",
+      "https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg",
+      "https://res.cloudinary.com/dtair9f5j/image/upload/v1743285096/42571743284690_.pic_hd_21.50.29_lrclhi.jpg",
+      "https://res.cloudinary.com/dtair9f5j/image/upload/v1743285137/42581743284694_.pic_hd_21.50.29_a64ly7.jpg"
     ];
     let index = 0;
 
+    // 预加载所有图片
     const preloadImages = () => {
       images.forEach(src => {
         const img = new Image();
@@ -76,19 +85,28 @@
     };
     preloadImages();
 
+    // 设置初始背景
     hero.style.backgroundImage = `url('${images[0]}')`;
 
+    // 轮播函数
     function changeBackground() {
-      hero.classList.add('fade');
       index = (index + 1) % images.length;
+      const nextImage = images[index];
+      // 创建一个新的层，做渐变效果
+      const before = document.createElement('div');
+      before.className = 'hero-bg-layer';
+      before.style.backgroundImage = `url('${nextImage}')`;
+      hero.appendChild(before);
       setTimeout(() => {
-        hero.style.backgroundImage = `url('${images[index]}')`;
-        hero.classList.remove('fade');
-      }, 500);
+        hero.style.backgroundImage = `url('${nextImage}')`;
+        before.remove();
+      }, 800);
     }
 
+    // 每隔10秒切换一次背景
     setInterval(changeBackground, 10000);
 
+    // 移动端下拉菜单
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('nav-links');
     hamburger.addEventListener('click', () => {
