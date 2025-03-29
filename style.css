@@ -15,11 +15,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7); /* 保留原本深色导航背景 */
   transition: opacity 0.4s ease;
   opacity: 0;
   pointer-events: none;
@@ -31,29 +27,36 @@ header.visible {
   pointer-events: auto;
 }
 
-.nav-left a,
-.nav-center a,
-.nav-right a {
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.left-nav a {
+  margin-left: 0;
   text-decoration: none;
   color: white;
   font-weight: 500;
+}
+
+.center-nav a {
   margin: 0 1rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
 }
 
-.nav-center {
+.right-nav {
   display: flex;
-  justify-content: center;
-  flex: 1;
-  text-align: center;
+  align-items: center;
 }
 
-.nav-left,
-.nav-right {
-  flex: 0;
-}
-
-.search-icon {
-  font-size: 1rem;
+.search-img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
 }
 
 .hero {
@@ -69,7 +72,7 @@ header.visible {
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.2); /* 更亮的遮罩 */
   z-index: 1;
 }
 
