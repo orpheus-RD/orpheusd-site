@@ -118,7 +118,7 @@ footer {
   z-index: 100;
 }
 
-/* 移动端美化：更窄、更紧贴左侧、直角 */
+
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
@@ -130,36 +130,46 @@ footer {
 
   .hamburger {
     display: block;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
   }
 
- .nav-right {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 55%;
-  max-width: 200px;
-  display: none;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0.8rem 1rem;
-  gap: 0.8rem;
-
-  /* ✅ 极轻毛玻璃效果 */
-  background-color: rgba(20, 20, 20, 0.15);         /* 更薄的遮罩层 */
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.08);       /* 超细边框 */
-  box-shadow: none;                                 /* 不投影了，更纯粹 */
-  border-radius: 0;
-  animation: slideDown 0.25s ease;
-}
+  .nav-right {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 55%;
+    max-width: 200px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.8rem 1rem;
+    gap: 0.8rem;
+    
+    /* 使用线性渐变让右下角透明 */
+    background: linear-gradient(135deg, 
+                  rgba(20,20,20,0.75) 0%, 
+                  rgba(20,20,20,0.75) 65%, 
+                  rgba(20,20,20,0) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    border-radius: 0;
+    animation: slideDown 0.25s ease;
+  }
 
   .nav-right.show {
     display: flex;
   }
 
   .nav-right a {
-    padding: 0.2rem 0;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: 0.3px;
