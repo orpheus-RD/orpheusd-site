@@ -6,7 +6,6 @@
   <title>Orpheusd</title>
   <link rel="stylesheet" href="style.css"/>
   <style>
-    /* 仅覆盖搜索图标的颜色 */
     .search-link .search-img {
       stroke: #fff !important;
       fill: none !important;
@@ -19,22 +18,24 @@
       <div class="nav-left">
         <a href="#">Home</a>
       </div>
-      <div class="nav-right">
+
+      <!-- 汉堡按钮 -->
+      <button class="hamburger" id="hamburger">&#9776;</button>
+
+      <div class="nav-right" id="nav-links">
         <a href="#">Photography</a>
         <a href="#">Magazine Essays</a>
         <a href="#">Academic Papers</a>
-        
-       <a href="#" title="Search" class="search-link">
-  <svg xmlns="http://www.w3.org/2000/svg"
-       width="18"
-       height="18"
-       viewBox="0 0 24 24"
-       style="stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
-    <circle cx="11" cy="11" r="8"/>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-  </svg>
-</a>
-
+        <a href="#" title="Search" class="search-link">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="18"
+               height="18"
+               viewBox="0 0 24 24"
+               style="stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
       </div>
     </div>
   </header>
@@ -52,41 +53,43 @@
     &copy; 2025 Orpheusd.com
   </footer>
 
- <script>
-  const nav = document.getElementById('navbar');
-  document.addEventListener('mousemove', (e) => {
-    if (e.clientY < 100) {
-      nav.classList.add('visible');
-    } else {
-      nav.classList.remove('visible');
+  <script>
+    const nav = document.getElementById('navbar');
+    document.addEventListener('mousemove', (e) => {
+      if (e.clientY < 100) {
+        nav.classList.add('visible');
+      } else {
+        nav.classList.remove('visible');
+      }
+    });
+
+    // 自动切换背景图片
+    const hero = document.querySelector('.hero');
+    const images = [
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg',
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284654/image1_duyhvo.jpg',
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285096/42571743284690_.pic_hd_21.50.29_lrclhi.jpg',
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285137/42581743284694_.pic_hd_21.50.29_a64ly7.jpg'
+    ];
+    let index = 0;
+
+    function changeBackground() {
+      index = (index + 1) % images.length;
+      hero.style.backgroundImage = `url('${images[index]}')`;
     }
-  });
 
-  // 自动切换背景图片
-  const hero = document.querySelector('.hero');
-  const images = [
-    'DSCF3114.JPG',
-    'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg',
-    'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284654/image1_duyhvo.jpg',
-    'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285096/42571743284690_.pic_hd_21.50.29_lrclhi.jpg',
-    'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285137/42581743284694_.pic_hd_21.50.29_a64ly7.jpg'
-  ];
-  let index = 0;
+    hero.style.backgroundImage = `url('${images[0]}')`;
+    setInterval(changeBackground, 10000);
 
-  function changeBackground() {
-    index = (index + 1) % images.length;
-    hero.style.backgroundImage = `url('${images[index]}')`;
-  }
-
-  // 初始设置
-  hero.style.backgroundImage = `url('${images[0]}')`;
-
-  // 每 10 秒切换
-  setInterval(changeBackground, 10000);
-</script>
-
-  
+    // 汉堡菜单功能
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
+
 
 
