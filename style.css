@@ -108,17 +108,8 @@ footer {
   font-size: 0.9rem;
 }
 
-.hamburger {
-  display: none;
-  font-size: 26px;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  z-index: 100;
-}
 
-
+/* 只贴移动端部分，直接覆盖之前 @media (max-width: 768px) 的内容 */
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
@@ -149,17 +140,14 @@ footer {
     align-items: flex-start;
     padding: 0.8rem 1rem;
     gap: 0.8rem;
-    
-    /* 使用线性渐变让右下角透明 */
-    background: linear-gradient(135deg, 
-                  rgba(20,20,20,0.75) 0%, 
-                  rgba(20,20,20,0.75) 65%, 
-                  rgba(20,20,20,0) 100%);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    /* ✅ 完全透明，没有任何遮挡 */
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
     box-shadow: none;
-    border-radius: 0;
+
     animation: slideDown 0.25s ease;
   }
 
@@ -167,6 +155,7 @@ footer {
     display: flex;
   }
 
+  /* 菜单文字带点阴影，避免和背景字重叠 */
   .nav-right a {
     color: #fff;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
@@ -193,3 +182,5 @@ footer {
   }
 }
 
+
+  
