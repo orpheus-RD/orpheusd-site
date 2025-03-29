@@ -136,7 +136,7 @@ footer {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 60%;
+    width: 50%;
     max-width: 220px;
     display: none;
     flex-direction: column;
