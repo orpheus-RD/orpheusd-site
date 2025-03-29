@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+  <header id="navbar">
+    <div class="logo">ORPHEUSD</div>
+    <nav>
+      <a href="#">Photography</a>
+      <a href="#">Magazine Essays</a>
+      <a href="#">Academic Papers</a>
+    </nav>
+  </header>
+
   <div class="hero">
     <div class="overlay"></div>
     <div class="content">
@@ -15,8 +24,20 @@
       <span class="byline">By Orpheusd</span>
     </div>
   </div>
+
   <footer>
     &copy; 2025 Orpheusd.com
   </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    document.addEventListener('mousemove', (e) => {
+      if (e.clientY < 100) {
+        nav.classList.add('visible');
+      } else {
+        nav.classList.remove('visible');
+      }
+    });
+  </script>
 </body>
 </html>

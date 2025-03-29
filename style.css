@@ -10,6 +10,45 @@ body, html {
   color: white;
 }
 
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+header.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+header .logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: white;
+}
+
+header nav a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
 .hero {
   position: relative;
   height: 100vh;
