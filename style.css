@@ -108,9 +108,10 @@ footer {
   font-size: 0.9rem;
 }
 
+/* 汉堡菜单按钮 */
 .hamburger {
   display: none;
-  font-size: 24px;
+  font-size: 26px;
   background: none;
   border: none;
   color: white;
@@ -118,7 +119,7 @@ footer {
   z-index: 100;
 }
 
-/* 移动端样式优化 */
+/* 高级感手机菜单样式 */
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
@@ -135,17 +136,19 @@ footer {
   .nav-right {
     position: absolute;
     top: 100%;
-    left: 0;
-    width: 100%;
+    right: 1rem;
+    width: 85%;
+    max-width: 320px;
     display: none;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     gap: 1rem;
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.6); /* 半透明毛玻璃感 */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    animation: fadeIn 0.3s ease-in-out;
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
   }
 
   .nav-right.show {
@@ -153,14 +156,22 @@ footer {
   }
 
   .nav-right a {
-    padding: 0.5rem 0;
-    font-size: 1rem;
+    padding: 0.2rem 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
   }
 
-  @keyframes fadeIn {
+  .nav-right a:hover {
+    transform: translateX(2px);
+    opacity: 0.85;
+  }
+
+  @keyframes slideDown {
     from {
       opacity: 0;
-      transform: translateY(-10px);
+      transform: translateY(-8px);
     }
     to {
       opacity: 1;
@@ -168,5 +179,6 @@ footer {
     }
   }
 }
+
 
 
