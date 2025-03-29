@@ -110,8 +110,7 @@ footer {
 
 
 
-   
-   @media (max-width: 768px) 的内容 */
+/* 只贴移动端部分，直接覆盖之前 @media (max-width: 768px) 的内容 */
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
@@ -183,3 +182,4 @@ footer {
     }
   }
 }
+
