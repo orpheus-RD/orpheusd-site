@@ -15,14 +15,12 @@
 <body>
   <header id="navbar">
     <div class="nav-bar">
-      <div class="nav-left">
-        <a href="#">Home</a>
-      </div>
-
-      <!-- 汉堡按钮 -->
+      <!-- 汉堡按钮：移动端才显示 -->
       <button class="hamburger" id="hamburger">&#9776;</button>
 
+      <!-- 所有导航链接，包括 Home -->
       <div class="nav-right" id="nav-links">
+        <a href="#">Home</a>
         <a href="#">Photography</a>
         <a href="#">Magazine Essays</a>
         <a href="#">Academic Papers</a>
@@ -63,7 +61,6 @@
       }
     });
 
-    // 自动切换背景图片
     const hero = document.querySelector('.hero');
     const images = [
       'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg',
@@ -90,6 +87,3 @@
   </script>
 </body>
 </html>
-
-
-
