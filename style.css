@@ -1,84 +1,59 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
   font-family: 'Georgia', serif;
-  background: #fff;
-  color: #111;
-}
-
-header {
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-nav a {
-  margin-left: 2rem;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-}
-
-nav a:hover {
-  text-decoration: underline;
+  color: white;
 }
 
 .hero {
+  position: relative;
+  height: 100vh;
+  background: url('DSCF3114.JPG') center center / cover no-repeat;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  padding: 4rem 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.hero .text {
-  flex: 1 1 50%;
-  padding: 1rem;
-}
-
-.hero .text h2 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.hero .sub {
-  font-style: italic;
-  font-size: 1.2rem;
-  color: #555;
-}
-
-.hero .byline {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #999;
-}
-
-.hero .image {
-  flex: 1 1 50%;
-  padding: 1rem;
+  justify-content: center;
   text-align: center;
 }
 
-.hero .image img {
-  max-width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.content h1 {
+  font-size: 3rem;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.content p {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.byline {
+  font-size: 0.9rem;
+  color: #ccc;
 }
 
 footer {
   text-align: center;
-  padding: 2rem;
-  background: #fafafa;
+  padding: 1.5rem;
+  background: #111;
+  color: #aaa;
   font-size: 0.9rem;
-  color: #777;
 }
