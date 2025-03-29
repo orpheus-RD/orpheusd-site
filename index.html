@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Orpheusd</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .search-link .search-img {
+      stroke: #fff !important;
+      fill: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header id="navbar">
+    <div class="nav-bar">
+      <div class="nav-left">
+        <a href="#">Home</a>
+      </div>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+      <div class="nav-right" id="nav-links">
+        <a href="#">Photography</a>
+        <a href="#">Magazine Essays</a>
+        <a href="#">Academic Papers</a>
+        <a href="#" title="Search" class="search-link">
+          <svg xmlns="http://www.w3.org/2000/svg"
+               width="18" height="18"
+               viewBox="0 0 24 24"
+               style="stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="hero" id="hero">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1>We Read and Watch the World</h1>
+      <p>An Aesthetic and Intellectual Exploration</p>
+      <span class="byline">By Orpheus</span>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Orpheusd.com
+  </footer>
+
+  <script>
+    const nav = document.getElementById('navbar');
+    document.addEventListener('mousemove', (e) => {
+      if (e.clientY < 100) {
+        nav.classList.add('visible');
+      } else {
+        nav.classList.remove('visible');
+      }
+    });
+
+    const hero = document.getElementById('hero');
+    const images = [
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg',
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743284654/image1_duyhvo.jpg',
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285096/42571743284690_.pic_hd_21.50.29_lrclhi.jpg',
+      'https://res.cloudinary.com/dtair9f5j/image/upload/v1743285137/42581743284694_.pic_hd_21.50.29_a64ly7.jpg'
+    ];
+    let index = 0;
+
+    const preloadImages = () => {
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+    };
+    preloadImages();
+
+    hero.style.backgroundImage = `url('${images[0]}')`;
+
+    function changeBackground() {
+      index = (index + 1) % images.length;
+      const nextImage = images[index];
+      const before = document.createElement('div');
+      before.className = 'hero-bg-layer';
+      before.style.backgroundImage = `url('${nextImage}')`;
+      hero.appendChild(before);
+      setTimeout(() => {
+        hero.style.backgroundImage = `url('${nextImage}')`;
+        before.remove();
+      }, 800);
+    }
+
+    setInterval(changeBackground, 10000);
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
