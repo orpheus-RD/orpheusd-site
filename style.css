@@ -1,3 +1,4 @@
+/* 通用基础样式 */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,7 @@ body, html {
   color: white;
 }
 
+/* 顶部导航栏基础样式 */
 header {
   position: fixed;
   top: 0;
@@ -34,23 +36,22 @@ header.visible {
   padding: 1rem 1.2rem;
 }
 
-.nav-left a,
-.nav-right a {
+.nav-left {
+  margin-right: auto;
+}
+
+.nav-left a {
   text-decoration: none;
   color: white;
   font-weight: 500;
 }
 
-.nav-left {
-  margin-right: auto;
-}
-
+/* 默认隐藏 nav-right 菜单（移动端展开用） */
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
+  display: none;
 }
 
+/* 搜索图标样式 */
 .search-img {
   width: 18px;
   height: 18px;
@@ -58,6 +59,7 @@ header.visible {
   filter: invert(1);
 }
 
+/* 全屏 hero 背景 */
 .hero {
   position: relative;
   height: 100vh;
@@ -108,9 +110,12 @@ footer {
   font-size: 0.9rem;
 }
 
+/* 汉堡按钮默认隐藏（只在手机端显示） */
+.hamburger {
+  display: none;
+}
 
-
-/* 只贴移动端部分，直接覆盖之前 @media (max-width: 768px) 的内容 */
+/* ✅ 手机端样式（<=768px） */
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
@@ -141,14 +146,11 @@ footer {
     align-items: flex-start;
     padding: 0.8rem 1rem;
     gap: 0.8rem;
-
-    /* ✅ 完全透明，没有任何遮挡 */
     background-color: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border: none;
     box-shadow: none;
-
     animation: slideDown 0.25s ease;
   }
 
@@ -156,7 +158,6 @@ footer {
     display: flex;
   }
 
-  /* 菜单文字带点阴影，避免和背景字重叠 */
   .nav-right a {
     color: #fff;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
@@ -182,4 +183,41 @@ footer {
     }
   }
 }
+
+/* ✅ 桌面端样式（>=769px） */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-left {
+    margin-right: auto;
+  }
+
+  .nav-left a {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 2rem;
+  }
+
+  .nav-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-right a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
+
 
