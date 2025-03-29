@@ -107,3 +107,47 @@ footer {
   color: #aaa;
   font-size: 0.9rem;
 }
+
+/* 汉堡菜单按钮 */
+.hamburger {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+  .nav-bar {
+    flex-wrap: wrap;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .nav-right.show {
+    display: flex;
+  }
+
+  .nav-right a {
+    padding: 0.5rem 0;
+  }
+
+  .nav-left {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
