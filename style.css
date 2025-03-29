@@ -108,7 +108,6 @@ footer {
   font-size: 0.9rem;
 }
 
-/* 汉堡菜单按钮 */
 .hamburger {
   display: none;
   font-size: 24px;
@@ -116,12 +115,17 @@ footer {
   border: none;
   color: white;
   cursor: pointer;
+  z-index: 100;
 }
 
-/* 移动端样式 */
+/* 移动端样式优化 */
 @media (max-width: 768px) {
   .nav-bar {
-    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
   }
 
   .hamburger {
@@ -129,12 +133,19 @@ footer {
   }
 
   .nav-right {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     display: none;
     flex-direction: column;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+    align-items: flex-start;
     padding: 1rem;
     gap: 1rem;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.6); /* 半透明毛玻璃感 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.3s ease-in-out;
   }
 
   .nav-right.show {
@@ -143,11 +154,19 @@ footer {
 
   .nav-right a {
     padding: 0.5rem 0;
+    font-size: 1rem;
   }
 
-  .nav-left {
-    width: 100%;
-    margin-bottom: 0.5rem;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
+
 
