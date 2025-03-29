@@ -34,6 +34,16 @@ header.visible {
   padding: 1rem 1.2rem;
 }
 
+/* ✅ 背景渐变效果 */
+.hero {
+  transition: background-image 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0.2;
+}
+
+
 .nav-left a {
   text-decoration: none;
   color: white;
