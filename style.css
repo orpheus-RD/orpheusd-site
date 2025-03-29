@@ -109,7 +109,9 @@ footer {
 }
 
 
-@media (max-width: 768px) {
+
+   
+   @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
     justify-content: space-between;
@@ -130,8 +132,7 @@ footer {
 
   .nav-right {
     position: absolute;
-    /* top: 110%;  往下再挪一点，避免正好压住标题 */
-    top: 8rem;
+    top: 100%;
     left: 0;
     width: 55%;
     max-width: 200px;
@@ -141,12 +142,12 @@ footer {
     padding: 0.8rem 1rem;
     gap: 0.8rem;
 
-    /* ✅ 极淡背景，但依旧几乎透明 */
+    /* ✅ 设置非常浅的不透明背景和模糊效果 */
     background-color: rgba(0, 0, 0, 0.05);
-    backdrop-filter: none; /* 或者 blur(2px) */
-    -webkit-backdrop-filter: none;
-    border: none;
-    box-shadow: none;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
     animation: slideDown 0.25s ease;
   }
@@ -157,7 +158,7 @@ footer {
 
   .nav-right a {
     color: #fff;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     font-size: 1.05rem;
     font-weight: 500;
     letter-spacing: 0.3px;
