@@ -4,37 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Orpheusd</title>
-
-  <!-- 如果你有自己的 style.css，可以保留。若怀疑被覆盖，先注释掉试试 -->
-  <!-- <link rel="stylesheet" href="style.css" /> -->
-
+  <link rel="stylesheet" href="style.css"/>
   <style>
-    /* 如果外部有 CSS 覆盖，我们就用 !important 并加上具体选择器 */
-    header#navbar .nav-bar .nav-right a.search-link svg.search-img {
-      fill: none !important;
+    /* 仅覆盖搜索图标的颜色 */
+    .search-link .search-img {
       stroke: #fff !important;
-      stroke-width: 2 !important;
-      stroke-linecap: round !important;
-      stroke-linejoin: round !important;
-    }
-
-    /* 其他导航样式演示 */
-    #navbar {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-    }
-    .nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-left a, .nav-right a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    .nav-right a:hover {
-      text-decoration: underline;
+      fill: none !important;
     }
   </style>
 </head>
@@ -49,7 +24,7 @@
         <a href="#">Magazine Essays</a>
         <a href="#">Academic Papers</a>
         <a href="#" title="Search" class="search-link">
-          <!-- 在 svg 里直接加 style 强行白色 -->
+          <!-- 在 SVG 标签内也添加内联样式，确保优先级最高 -->
           <svg class="search-img" xmlns="http://www.w3.org/2000/svg"
                width="18" height="18" viewBox="0 0 24 24"
                style="stroke: #fff; fill: none;"
@@ -57,21 +32,21 @@
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
           </svg>
-        </a>
+        </a>  
       </div>
     </div>
   </header>
 
-  <div class="hero" style="height: 400px; background: url('https://via.placeholder.com/1200x400') center/cover;">
+  <div class="hero">
     <div class="overlay"></div>
-    <div class="content" style="color: #fff; text-align: center; padding-top: 150px;">
+    <div class="content">
       <h1>We Read and Watch the World</h1>
       <p>An Aesthetic and Intellectual Exploration</p>
       <span class="byline">By Orpheus</span>
     </div>
   </div>
 
-  <footer style="text-align:center; padding:20px; background:#333; color:#fff;">
+  <footer>
     &copy; 2025 Orpheusd.com
   </footer>
 
@@ -87,4 +62,5 @@
   </script>
 </body>
 </html>
+
 
