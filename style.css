@@ -31,7 +31,7 @@ header.visible {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1rem 1.2rem;
 }
 
 .nav-left a,
@@ -41,6 +41,10 @@ header.visible {
   font-weight: 500;
 }
 
+.nav-left {
+  margin-right: auto;
+}
+
 .nav-right {
   display: flex;
   align-items: center;
@@ -48,8 +52,8 @@ header.visible {
 }
 
 .search-img {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   vertical-align: middle;
   filter: invert(1);
 }
