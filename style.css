@@ -1,4 +1,3 @@
-/* 通用基础样式 */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +10,6 @@ body, html {
   color: white;
 }
 
-/* 顶部导航栏基础样式 */
 header {
   position: fixed;
   top: 0;
@@ -36,22 +34,16 @@ header.visible {
   padding: 1rem 1.2rem;
 }
 
-.nav-left {
-  margin-right: auto;
-}
-
 .nav-left a {
   text-decoration: none;
   color: white;
   font-weight: 500;
 }
 
-/* 默认隐藏 nav-right 菜单（移动端展开用） */
 .nav-right {
   display: none;
 }
 
-/* 搜索图标样式 */
 .search-img {
   width: 18px;
   height: 18px;
@@ -59,7 +51,6 @@ header.visible {
   filter: invert(1);
 }
 
-/* 全屏 hero 背景 */
 .hero {
   position: relative;
   height: 100vh;
@@ -110,12 +101,10 @@ footer {
   font-size: 0.9rem;
 }
 
-/* 汉堡按钮默认隐藏（只在手机端显示） */
 .hamburger {
   display: none;
 }
 
-/* ✅ 手机端样式（<=768px） */
 @media (max-width: 768px) {
   .nav-bar {
     flex-direction: row;
@@ -160,6 +149,7 @@ footer {
 
   .nav-right a {
     color: #fff;
+    text-decoration: none;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     font-size: 1.05rem;
     font-weight: 500;
@@ -184,15 +174,9 @@ footer {
   }
 }
 
-/* ✅ 桌面端样式（>=769px） */
 @media (min-width: 769px) {
   .hamburger {
     display: none;
-  }
-
-  .nav-bar {
-    display: flex;
-    align-items: center;
   }
 
   .nav-left {
@@ -211,6 +195,7 @@ footer {
     flex-direction: row;
     align-items: center;
     gap: 2rem;
+    margin-left: auto;
   }
 
   .nav-right a {
@@ -218,6 +203,8 @@ footer {
     text-decoration: none;
     font-weight: 500;
   }
+
+  .search-link {
+    margin-left: auto;
+  }
 }
-
-
