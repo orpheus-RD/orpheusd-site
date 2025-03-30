@@ -30,6 +30,7 @@
           <svg xmlns="http://www.w3.org/2000/svg"
                width="18" height="18"
                viewBox="0 0 24 24"
+               class="search-img"
                style="stroke: white; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
             <circle cx="11" cy="11" r="8"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"/>
@@ -41,6 +42,9 @@
 
   <!-- 全屏背景区块 -->
   <div class="hero" id="hero">
+    <!-- 新增两个背景层 -->
+    <div class="bg-layer layer1"></div>
+    <div class="bg-layer layer2"></div>
     <div class="overlay"></div>
     <div class="content">
       <h1>We Read and Watch the World</h1>
@@ -65,10 +69,11 @@
       }
     });
 
-    // 轮播背景图
-    const hero = document.getElementById('hero');
-    // 将你想要最先显示的那张图片放在数组的第一个位置
-    const images = ["DSCF3114.JPG",
+    // 轮播背景图（双层背景切换）
+    const layers = document.querySelectorAll('.bg-layer');
+    // 将你想要最先显示的那张图片放在数组的第一个位置（也可以使用本地图片）
+    const images = [
+      "DSCF3114.JPG",
       "https://res.cloudinary.com/dtair9f5j/image/upload/v1743284654/image1_duyhvo.jpg",
       "https://res.cloudinary.com/dtair9f5j/image/upload/v1743284038/image3_ufcjcf.jpg",
       "https://res.cloudinary.com/dtair9f5j/image/upload/v1743285096/42571743284690_.pic_hd_21.50.29_lrclhi.jpg",
@@ -77,29 +82,38 @@
     let index = 0;
 
     // 预加载所有图片
-    const preloadImages = () => {
-      images.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    };
-    preloadImages();
+    images.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
 
-    // 设置初始背景
-    hero.style.backgroundImage = `url('${images[0]}')`;
+    // 初始化：显示第一背景层，隐藏第二背景层
+    layers[0].style.backgroundImage = `url('${images[0]}')`;
+    layers[0].style.opacity = '1';
+    layers[1].style.opacity = '0';
 
-    // 轮播函数
+    // 轮播函数：交替更新背景层的图片与透明度
     function changeBackground() {
       index = (index + 1) % images.length;
       const nextImage = images[index];
-      // 创建一个新的层，做渐变效果
-      const before = document.createElement('div');
-      before.className = 'hero-bg-layer';
-      before.style.backgroundImage = `url('${nextImage}')`;
-      hero.appendChild(before);
+      
+      // 判断当前哪个背景层是可见的
+      let currentLayer, nextLayer;
+      if (layers[0].style.opacity === '1') {
+        currentLayer = layers[0];
+        nextLayer = layers[1];
+      } else {
+        currentLayer = layers[1];
+        nextLayer = layers[0];
+      }
+      
+      // 更新隐藏层背景图，并将其淡入显示
+      nextLayer.style.backgroundImage = `url('${nextImage}')`;
+      nextLayer.style.opacity = '1';
+      
+      // 在过渡后将当前层淡出隐藏
       setTimeout(() => {
-        hero.style.backgroundImage = `url('${nextImage}')`;
-        before.remove();
+        currentLayer.style.opacity = '0';
       }, 800);
     }
 
