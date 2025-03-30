@@ -51,7 +51,6 @@ header.visible {
   width: 18px;
   height: 18px;
   vertical-align: middle;
-  filter: invert(1);
 }
 
 /* 全屏背景容器 */
